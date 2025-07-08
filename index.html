@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Háp Pi Bớt Đê 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #fff5f8;
+    }
+
+    button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    .floating {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatUp 6s linear forwards;
+      pointer-events: none;
+    }
+
+    .floating-img {
+      position: absolute;
+      width: 60px;
+      height: auto;
+      animation: floatUp 6s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+        #startBtn {
+      margin: 300px 300px;
+      margin-left: 300px;
+      font-size: 20px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+    }
+    #txt {
+      margin-left: 300px;
+      color: rgb(233, 110, 130);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+<h1 id="txt">🎉Chúc Mừng Sinh Nhựt Bảo Dyyyy nha🎂</h1>
+<button id="startBtn">Cảnh báo không ấn vào đây!</button>
+<audio id="birthdayAudio" src="https://cdn.pixabay.com/download/audio/2022/03/14/audio_f1c17cc2ea.mp3?filename=happy-birthday-6594.mp3" loop></audio>
+
+<script>
+  const emojis = ['🎈', '🎂', '🎁', '🎉', '🎊', '🥳', '💖', '💞',
+    '🍰', '🧁', '🍭', '🎇', '✨', '👑', '🎆', '🍬', '🍦'];
+  const images = [
+    "IMG/1.jpg",
+    "IMG/2.jpg",
+    "IMG/3.jpg",
+    "IMG/4.jpg",
+    "IMG/5.jpg",
+    "IMG/6.jpg",
+    "IMG/7.jpg",
+    "IMG/8.jpg",
+    "IMG/9.jpg",
+    "IMG/10.jpg",
+    "IMG/11.jpg",
+    "IMG/12.jpg",
+    "IMG/13.jpg",
+    "IMG/14.jpg",
+    "IMG/15.jpg",
+  ];
+  function createFloatingEmoji() {
+    const el = document.createElement('div');
+    el.classList.add('floating');
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.bottom = '0px';
+    document.body.appendChild(el);
+
+    el.addEventListener('animationend', () => {
+      el.remove();
+    });
+  }
+
+  function createFloatingImage() {
+    const img = document.createElement('img');
+    img.classList.add('floating-img');
+    img.src = images[Math.floor(Math.random() * images.length)];
+    img.style.left = Math.random() * 100 + 'vw';
+    img.style.bottom = '0px';
+    img.style.width = 50 + Math.random() * 50 + 'px'; // ngẫu nhiên kích thước
+
+    document.body.appendChild(img);
+
+    img.addEventListener('animationend', () => {
+      img.remove();
+    });
+  }
+
+  document.getElementById('startBtn').addEventListener('click', () => {
+    const audio = document.getElementById('birthdayAudio');
+    audio.play();
+    var txt = document.getElementById("txt");
+    document.getElementById('startBtn').style.opacity = 0;
+    txt.style.opacity = 100;
+    document.body.style.background = "pink"
+    setInterval(() => {
+      const random = Math.random();
+      if (random < 0.5) {
+        createFloatingEmoji();
+      } else {
+        createFloatingImage();
+      }
+    }, 300);
+  });
+</script>
+
+</body>
+</html>
