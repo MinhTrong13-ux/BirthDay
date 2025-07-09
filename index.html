@@ -44,6 +44,14 @@
         opacity: 0;
       }
     }
+   @keyframes lac {
+     0%  { 
+      transform: rotate(0deg); }
+      25%  { transform: rotate(5deg); }
+      50%  { transform: rotate(-5deg); }
+      75%  { transform: rotate(5deg); }
+      100% { transform: rotate(0deg); }
+    }
         #startBtn {
       margin: 300px 300px;
       margin-left: 300px;
@@ -55,6 +63,7 @@
       cursor: pointer;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
       transition: transform 0.2s ease;
+      animation: lac 0.5s infinite;
     }
     #txt {
       margin-left: 300px;
@@ -65,7 +74,7 @@
 </head>
 <body>
 <h1 id="txt">🎉Chúc Mừng Sinh Nhựt Bảo Dyyyy nha🎂</h1>
-<button id="startBtn">Cảnh báo không ấn vào đây!</button>
+<button id="startBtn"><img src="IMG/cake.png" style="width: 100;height: 100;"/></button>
 <audio id="birthdayAudio" src="https://cdn.pixabay.com/download/audio/2022/03/14/audio_f1c17cc2ea.mp3?filename=happy-birthday-6594.mp3" loop></audio>
 
 <script>
@@ -94,6 +103,7 @@
     el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
     el.style.left = Math.random() * 100 + 'vw';
     el.style.bottom = '0px';
+    el.style.width = 70;
     document.body.appendChild(el);
 
     el.addEventListener('animationend', () => {
@@ -107,7 +117,7 @@
     img.src = images[Math.floor(Math.random() * images.length)];
     img.style.left = Math.random() * 100 + 'vw';
     img.style.bottom = '0px';
-    img.style.width = 50 + Math.random() * 50 + 'px'; // ngẫu nhiên kích thước
+    img.style.width = 100 + Math.random() * 50 + 'px'; // ngẫu nhiên kích thước
 
     document.body.appendChild(img);
 
